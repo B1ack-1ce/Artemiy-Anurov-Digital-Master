@@ -1,0 +1,31 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.4.33110.190
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Digital_Master", "Digital_Master.csproj", "{2119B569-106A-4FA1-9E75-131A2BD2F2E9}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "IntroductionToProgramming", "..\IntroductionToProgramming\IntroductionToProgramming.csproj", "{FA28920D-E87A-4F85-B319-01AD85530400}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{2119B569-106A-4FA1-9E75-131A2BD2F2E9}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{2119B569-106A-4FA1-9E75-131A2BD2F2E9}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{2119B569-106A-4FA1-9E75-131A2BD2F2E9}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{2119B569-106A-4FA1-9E75-131A2BD2F2E9}.Release|Any CPU.Build.0 = Release|Any CPU
+		{FA28920D-E87A-4F85-B319-01AD85530400}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{FA28920D-E87A-4F85-B319-01AD85530400}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{FA28920D-E87A-4F85-B319-01AD85530400}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{FA28920D-E87A-4F85-B319-01AD85530400}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {A5BA82B9-BEDA-4403-9554-94494520489E}
+	EndGlobalSection
+EndGlobal
