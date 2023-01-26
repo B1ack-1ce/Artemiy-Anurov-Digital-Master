@@ -10,7 +10,7 @@ namespace IntroductionToProgramming
     {
         private static void Main(string[] args)
         {
-            Exaple();
+            FoundAverageOfArray();
         }
         /// <summary>
         /// Метод реверса заданного массива.
@@ -172,7 +172,7 @@ namespace IntroductionToProgramming
         /// <summary>
         /// Метод, выполняющий сортировку массива
         /// </summary>
-        private static void DoesArraySorting()
+        private static void ArraySorting()
         {
             int[] numbers = { 77, 46, 11, 89, 48, 14, 67, 73, 22, 26 };
 
@@ -201,8 +201,10 @@ namespace IntroductionToProgramming
             }
             Console.ReadKey();
         }
-
-        private static void Exaple()
+        /// <summary>
+        /// Домашнее задание: Блок 3, задание 1. Нахождение среднего арифметического среди всех элементов массива
+        /// </summary>
+        private static void FoundAverageOfArray()
         {
             int[] numbers = { 2, 5, 13, 7, 6, 4 };
             int sum = 0;
@@ -213,8 +215,8 @@ namespace IntroductionToProgramming
 
             while (index < size)
             {
-                sum = sum + numbers[index];
-                index = index + 1;
+                sum += numbers[index];
+                index++;
             }
             avg = sum / size;
 
