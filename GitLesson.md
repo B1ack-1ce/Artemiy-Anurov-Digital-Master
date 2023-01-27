@@ -14,6 +14,12 @@
 
 * **git commit -am "message"** - the same as flag -m but allow us avoid git add
 
+**git log** - get story of commits
+
+**git checkout** - allow us switch commits
+
 * ctrl + 1 - code
 * ctrl + 0 - file tree
 * ctrl + ` или по-другому ctrl+ё - terminal
+
+**:wq + Enter** - выйти с консоли Unix
