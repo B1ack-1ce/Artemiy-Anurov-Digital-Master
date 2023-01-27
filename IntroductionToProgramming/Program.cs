@@ -223,5 +223,7 @@ namespace IntroductionToProgramming
             Console.WriteLine($"Среднее значение в массиве равна {avg}");
             Console.ReadKey();
         }
+
+        
     }
 }
