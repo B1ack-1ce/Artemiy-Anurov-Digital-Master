@@ -16,7 +16,9 @@
 
 **git log** - get story of commits
 
-**git checkout** - allow us switch commits
+#### **git checkout** - allow us switch between commits
+
+* **git checkout master** - get back to main tree
 
 * ctrl + 1 - code
 * ctrl + 0 - file tree
