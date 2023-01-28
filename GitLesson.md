@@ -20,6 +20,8 @@
 
 * **git checkout master** - get back to main tree
 
+**git diff** - show differences between current state and last commit
+
 * ctrl + 1 - code
 * ctrl + 0 - file tree
 * ctrl + ` или по-другому ctrl+ё - terminal
