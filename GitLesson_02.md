@@ -9,3 +9,6 @@
 - **git log --graph** - show commit story (graphic)
 
 - **git merge name_branch** - merging current branch with name_branch
+
+здесь что то невразумительное
+
