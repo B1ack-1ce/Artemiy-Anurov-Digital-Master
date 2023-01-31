@@ -10,5 +10,4 @@
 
 - **git merge name_branch** - merging current branch with name_branch
 
-здесь что то невразумительное
-
+- ** ** - 
