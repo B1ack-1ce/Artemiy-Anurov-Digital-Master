@@ -5,3 +5,7 @@
 - **git branch -d name_branch** -  delete merged branch
 
 - **git branch -D name_branch** - force deleting a branch
+
+- **git log --graph** - show commit story (graphic)
+
+- **git merge name_branch** - merging current branch with name_branch
