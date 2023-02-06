@@ -10,4 +10,8 @@
 
 - **git merge name_branch** - merging current branch with name_branch
 
-- ** ** - 
+- **А здесь текст для второй ветки и создания конфликта**
+
+И пусть тут будет что то написано
+
+и здесь
