@@ -10,4 +10,7 @@
 
 - **git merge name_branch** - merging current branch with name_branch
 
-- ** ** - 
+- **Здесь какой то текст для создания конфликтной ситуации** 
+
+**Плюс еще 1 строчка**
+
