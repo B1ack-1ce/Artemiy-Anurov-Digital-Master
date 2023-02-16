@@ -5,56 +5,56 @@ static void Menu() // Меню вызова задач.
 {
     bool flag = false;
 
-while (flag != true)
-{
-    Console.Clear();
-    Console.WriteLine("Меню выбора задачи:");
-    Console.WriteLine("Нажмите цифру для выбора задачи");
-    Console.WriteLine("1 - Программа для поиска максимального числа из двух заданных чисел.");
-    Console.WriteLine("2 - Программа для поиска максимального числа из трех заданных чисел.");
-    Console.WriteLine("3 - Программа для проверки четности числа.");
-    Console.WriteLine("4 - Программа для поиска всех четных чисел в диапазоне от 1 до заданного числа.");
-    Console.WriteLine("0 - для выхода из программы.");
-    
-    bool access = int.TryParse(Console.ReadLine(),out int result);
-    if (access == true)
-    {
-        switch (result)
-        {
-            case 1:
-            Example_01();
-            break;
-
-            case 2:
-            Example_02();
-            break;
-
-            case 3:
-            Example_03();
-            break;
-
-            case 4:
-            Example_04();
-            break;
-
-            case 0:
-            flag = true;
-            break;
-
-            default:
-            Console.Clear();
-            Console.WriteLine("Номер задачи введен некорректно. Повторите попытку.");
-            Console.ReadLine();
-            break;
-        }
-    }
-    else 
+    while (flag != true)
     {
         Console.Clear();
-        Console.WriteLine("Команда не распознана. Повторите попытку");
-        Console.ReadLine();
+        Console.WriteLine("Меню выбора задачи:");
+        Console.WriteLine("Нажмите цифру для выбора задачи");
+        Console.WriteLine("1 - Программа для поиска максимального числа из двух заданных чисел.");
+        Console.WriteLine("2 - Программа для поиска максимального числа из трех заданных чисел.");
+        Console.WriteLine("3 - Программа для проверки четности числа.");
+        Console.WriteLine("4 - Программа для поиска всех четных чисел в диапазоне от 1 до заданного числа.");
+        Console.WriteLine("0 - для выхода из программы.");
+        
+        bool access = int.TryParse(Console.ReadLine(),out int result);
+        if (access == true)
+        {
+            switch (result)
+            {
+                case 1:
+                Example_01();
+                break;
+
+                case 2:
+                Example_02();
+                break;
+
+                case 3:
+                Example_03();
+                break;
+
+                case 4:
+                Example_04();
+                break;
+
+                case 0:
+                flag = true;
+                break;
+
+                default:
+                Console.Clear();
+                Console.WriteLine("Номер задачи введен некорректно. Повторите попытку.");
+                Console.ReadLine();
+                break;
+            }
+        }
+        else 
+        {
+            Console.Clear();
+            Console.WriteLine("Команда не распознана. Повторите попытку");
+            Console.ReadLine();
+        }
     }
-}
 }
 
 static void Example_01()

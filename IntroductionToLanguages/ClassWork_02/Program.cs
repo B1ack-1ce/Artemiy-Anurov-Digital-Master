@@ -59,7 +59,7 @@ static void Example_04() //Программа, которая принимает
 
     if (number % 7 == 0 && number % 23 == 0)
     {
-        System.Console.WriteLine($"Число {number} кратен числу 7 или 23");
+        Console.WriteLine($"Число {number} кратен числу 7 или 23");
     }
     else
     {
