@@ -1,4 +1,6 @@
-﻿Menu();
+﻿using System;
+
+Menu();
 
 static void Menu() //Меню выбора задачи
 {
@@ -10,8 +12,8 @@ static void Menu() //Меню выбора задачи
         Console.WriteLine("Меню выбора задачи.");
         Console.WriteLine("Введите цифру для выбора задачи:");
         Console.WriteLine("1 - Программа для возведения числа в степень.");
-        Console.WriteLine("2 - Программа для .");
-        Console.WriteLine("3 - Программа для .");
+        Console.WriteLine("2 - Программа для вывода суммы цифр в числе.");
+        Console.WriteLine("3 - Программа задающая и выводящая массив из N элементов на экран.");
         Console.WriteLine("0 - Для выхода из программы.");
         
         bool access = int.TryParse(Console.ReadLine(),out int result);
@@ -28,7 +30,7 @@ static void Menu() //Меню выбора задачи
                 break;
 
                 case 3:
-                //Task_29();
+                Task_29();
                 break;
 
                 case 0:
@@ -82,21 +84,43 @@ static int Pow(int number, int degree) //Метод возведения чис�
 
 static void Task_27()
 {
-
+    int userNumber = Prompt("Введите число для вывода суммы цифр в числе.");
+    int result = SumOfNumbers(userNumber);
+    Console.WriteLine($"Сумма цифр в числе {userNumber} = {result}");
+    Console.ReadLine();
 }
 
-/*
-Задача 27: Напишите программу, которая принимает на вход число и выдаёт сумму цифр в числе.
+static int SumOfNumbers(int userNumber) //Метод для подсчета суммы цифр в числе
+{
+    int result = 0;
+    for (int i = 0; userNumber > 0; i = 0) //Немножко извращенный цикл :-)
+    {
+        i = userNumber % 10;
+        userNumber /= 10;
+        result += i;
+    }
+    return result;
+}
 
-452 -> 11
+static void Task_29()
+{
+    Console.Clear();
+    int countOfElements = Prompt("Сколько элементов вы хотите создать в массиве.");
+    int [] userArr = CreateArrOfNumbers(countOfElements);
+    for (int i = 0; i < userArr.Length; i++)
+    {
+        Console.Write($"{userArr[i]}\t");
+    }
+    Console.ReadLine();
+}
 
-82 -> 10
-
-9012 -> 12
-
-Задача 29: Напишите программу, которая задаёт массив из 8 элементов и выводит их на экран.
-
-1, 2, 5, 7, 19 -> [1, 2, 5, 7, 19]
-
-6, 1, 33 -> [6, 1, 33]
-*/
+static int [] CreateArrOfNumbers(int countsOfElementsArr) //Метод для создания заданной размерности массива и его заполнения
+{
+    int [] result = new int[countsOfElementsArr];
+    for (int i = 0; i < result.Length; i++)
+    {
+        Console.Clear();
+        result [i] = Prompt($"Введите {i + 1} элемент массива.");
+    }
+    return result;
+}
