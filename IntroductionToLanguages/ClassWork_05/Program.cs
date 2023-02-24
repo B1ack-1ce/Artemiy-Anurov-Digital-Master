@@ -38,7 +38,7 @@ static int Prompt(string message)// Метод запроса числа.
     return result;
 }
 
-static void Task_32()
+static void Task_32() // Метод для изменения знака на противоположный
 {
     int [] arr = new int [8];
     Random random = new Random();
@@ -55,7 +55,7 @@ static void Task_32()
     }
 }
 
-static void Task_33()
+static void Task_33() // Метод для поиска конкретного значения в массиве
 {
     
     int [] arr = {6, 7, 19, 345, 3};
@@ -86,7 +86,7 @@ static bool FoundNumberOfArray(int [] arr, int userNumber, out int index)
     return false;
 }
 
-static void Task_35()
+static void Task_35() //Метод для поиска конкретных значений в диапазоне от N до N
 {
     int [] arr = new int [123];
     Random random = new Random();
@@ -109,7 +109,7 @@ static void Task_35()
     Console.WriteLine($"Количество элементов в диапазоне от 10 до 99 = {count}");
 }
 
-static void Task_37()
+static void Task_37() //Метод для вывода произведения первых на последние элементов массива о_О
 {
     int [] arr = {1, 2, 3, 4, 5};
     int [] arr2;
@@ -117,7 +117,7 @@ static void Task_37()
     if (arr.Length % 2 != 0) // проверка на четность и нечетность кол-ва эл. массива
     {
         arr2 = new int [arr.Length / 2 + 1];
-        arr2 [arr.Length / 2] = arr[arr.Length / 2];
+        arr2 [arr.Length / 2] = arr[arr.Length / 2]; //Та самая причинаа, по которой начинающие программисты не любят массивы 
     }
     else
     {
