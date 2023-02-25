@@ -1,6 +1,7 @@
-﻿Menu();
+﻿Random random = new Random();
+Menu();
 
-static void Menu() //Меню выбора задачи
+void Menu() //Меню выбора задачи.
 {
     bool flag = false;
 
@@ -51,16 +52,20 @@ static void Menu() //Меню выбора задачи
     }
 }
 
-static void Task_34()
-{
-    Random random = new Random();
-
-    int [] arr = new int [random.Next(5,16)];
-    
-    for (int i = 0; i < arr.Length; i++)
+int [] CreateAndFillingArray(int minDimension, int maxDimension, int minValue, int maxValue) //Метод для создания и заполнения массива псевдо-рандомными числами.
+{                                                                                            //minDimension - минимальное число размерности массива для метода Random.Next
+    int [] arr = new int [random.Next(minDimension, maxDimension)];                          //maxDimension - максимальное число размерности массива для метода Random.Next
+                                                                                             //minValue - минимальное значение элемента массива метода Random.Next
+    for (int i = 0; i < arr.Length; i++)                                                     //maxValue - максимальное значение элемента массива  метода Random.Next
     {
-        arr[i] = random.Next(100,1000);
+        arr [i] = random.Next(minValue,maxValue);
     }
+    return arr;
+}
+
+void Task_34()
+{
+    int [] arr = CreateAndFillingArray(5, 11, 100, 1000);
 
     int count = FindEvenNumbersOfArray(arr);
 
@@ -69,7 +74,7 @@ static void Task_34()
     Console.ReadLine();
 }
 
-static int FindEvenNumbersOfArray(int [] arr) //Поиск четных элементов в переданном массиве и их посчет 
+int FindEvenNumbersOfArray(int [] arr) //Поиск четных элементов в переданном массиве и их посчет. Относится к Task_34.
 {
     int count = 0;
     for (int i = 0; i < arr.Length; i++)
@@ -82,29 +87,56 @@ static int FindEvenNumbersOfArray(int [] arr) //Поиск четных элем
     return count;
 }
 
-static void Task_36()
+ void Task_36()
 {
+    int [] arr = CreateAndFillingArray(5, 11, 0, 20);
+    int sum = SumOfElementsOfOddIndex(arr);
+
+    Console.WriteLine(String.Join("   ", arr));
+    Console.WriteLine($"Сумма элементов на нечетных индексах = {sum}");
+    Console.ReadLine();
+}
+
+int SumOfElementsOfOddIndex(int [] arr) //Метод для посчета суммы элементов с нечетным индексом. Относится к Task_36.
+{
+    int sum = 0;
+    for (int i = 0; i < arr.Length; i++)
+    {
+        if(i % 2 != 0)
+        {
+            sum += arr[i];
+        }
+    }
+    return sum;
+}
+
+ void Task_38()
+{
+    int [] arr = CreateAndFillingArray(5, 11, 0 , 20);
+    int dif = FindDifferenceMinAndMaxValue(arr);
+
+    Console.WriteLine(String.Join("   ", arr));
+    Console.WriteLine($"Разница между минимальным и максимальным значениями = {dif}");
+    Console.ReadLine();
 
 }
 
-static void Task_38()
+int FindDifferenceMinAndMaxValue(int[] arr) //Метод для поиска разницы между минимальным и максимальным значениями. Относится к Task_38.
 {
+    int minValue = arr[0];
+    int maxValue = arr[0];
 
+    for (int i = 1; i < arr.Length; i++)
+    {
+        if(arr [i] < minValue)
+        {
+            minValue = arr[i];
+        }
+        if (arr [i] > maxValue)
+        {
+            maxValue = arr[i];
+        }
+    }
+
+    return maxValue - minValue;
 }
-
-
-/*
-Задача 34: Задайте массив заполненный случайными положительными трёхзначными числами. Напишите программу, которая покажет количество чётных чисел в массиве.
-
-[345, 897, 568, 234] -> 2
-
-Задача 36: Задайте одномерный массив, заполненный случайными числами. Найдите сумму элементов, стоящих на нечётных позициях.
-
-[3, 7, 23, 12] -> 19
-
-[-4, -6, 89, 6] -> 0
-
-Задача 38: Задайте массив вещественных чисел. Найдите разницу между максимальным и минимальным элементов массива.
-
-[3 7 22 2 78] -> 76
-*/
