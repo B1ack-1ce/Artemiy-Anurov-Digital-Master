@@ -65,11 +65,12 @@ int [] CreateAndFillingArray(int minDimension, int maxDimension, int minValue, i
 
 void Task_34()
 {
+    Console.Clear();
     int [] arr = CreateAndFillingArray(5, 11, 100, 1000);
 
     int count = FindEvenNumbersOfArray(arr);
 
-    Console.WriteLine(String.Join(" ", arr));
+    Console.WriteLine("Массив: " + String.Join("   ", arr));
     Console.WriteLine($"Количество положительных элементов в массиве: {count}");
     Console.ReadLine();
 }
@@ -89,10 +90,11 @@ int FindEvenNumbersOfArray(int [] arr) //Поиск четных элемент�
 
  void Task_36()
 {
+    Console.Clear();
     int [] arr = CreateAndFillingArray(5, 11, 0, 20);
     int sum = SumOfElementsOfOddIndex(arr);
 
-    Console.WriteLine(String.Join("   ", arr));
+    Console.WriteLine("Массив: " + String.Join("   ", arr));
     Console.WriteLine($"Сумма элементов на нечетных индексах = {sum}");
     Console.ReadLine();
 }
@@ -112,31 +114,32 @@ int SumOfElementsOfOddIndex(int [] arr) //Метод для посчета су�
 
  void Task_38()
 {
+    Console.Clear();
     int [] arr = CreateAndFillingArray(5, 11, 0 , 20);
-    int dif = FindDifferenceMinAndMaxValue(arr);
 
-    Console.WriteLine(String.Join("   ", arr));
-    Console.WriteLine($"Разница между минимальным и максимальным значениями = {dif}");
+    int minValue = arr[0];
+    int maxValue = arr[0];
+    int dif = FindDifferenceMinAndMaxValue(arr, ref minValue, ref maxValue);
+
+    Console.WriteLine("Массив: " + String.Join("   ", arr));
+    Console.WriteLine($"Минимальное значение: {minValue}\nМаксимальное значение: {maxValue}");
+    Console.WriteLine($"Разница между минимальным и максимальным значениями: {dif}");
     Console.ReadLine();
 
 }
 
-int FindDifferenceMinAndMaxValue(int[] arr) //Метод для поиска разницы между минимальным и максимальным значениями. Относится к Task_38.
+int FindDifferenceMinAndMaxValue(int[] arr, ref int minValue, ref int maxValue) //Метод для поиска разницы между минимальным и максимальным значениями. Относится к Task_38.
 {
-    int minValue = arr[0];
-    int maxValue = arr[0];
-
     for (int i = 1; i < arr.Length; i++)
     {
         if(arr [i] < minValue)
         {
             minValue = arr[i];
         }
-        if (arr [i] > maxValue)
+        else if (arr [i] > maxValue)
         {
             maxValue = arr[i];
         }
     }
-
     return maxValue - minValue;
 }
