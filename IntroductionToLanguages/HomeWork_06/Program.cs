@@ -1,4 +1,5 @@
-﻿Random random = new Random();
+﻿using System;
+
 Menu();
 
 void Menu() //Меню выбора задачи.
@@ -10,40 +11,37 @@ void Menu() //Меню выбора задачи.
         Console.Clear();
         Console.WriteLine("Меню выбора задачи.");
         Console.WriteLine("Введите цифру для выбора задачи:");
-        Console.WriteLine("1 - Программа для вывода количества чётных чисел в массиве.");
-        Console.WriteLine("2 - Программа для посчета суммы элементов массива, стоящих на нечётных позициях.");
-        Console.WriteLine("3 - Программа для расчета разницы между максимальным и минимальным элементов массива.");
+        Console.WriteLine("1 - Программа для подсчета чисел больше 0.");
+        Console.WriteLine("2 - Программа для нахождения точки пересечения двух прямых.");
         Console.WriteLine("0 - Для выхода из программы.");
-        
-        bool access = int.TryParse(Console.ReadLine(),out int result);
+
+        bool access = int.TryParse(Console.ReadLine(), out int result);
         if (access == true)
         {
             switch (result)
             {
                 case 1:
-                Task_34();
-                break;
+                    Console.Clear();
+                    Task_41();
+                    break;
 
                 case 2:
-                Task_36();
-                break;
-
-                case 3:
-                Task_38();
-                break;
+                    Console.Clear();
+                    Task_43();
+                    break;
 
                 case 0:
-                flag = true;
-                break;
+                    flag = true;
+                    break;
 
                 default:
-                Console.Clear();
-                Console.WriteLine("Номер задачи введен некорректно. Повторите попытку.");
-                Console.ReadLine();
-                break;
+                    Console.Clear();
+                    Console.WriteLine("Номер задачи введен некорректно. Повторите попытку.");
+                    Console.ReadLine();
+                    break;
             }
         }
-        else 
+        else
         {
             Console.Clear();
             Console.WriteLine("Ошибка ввода. Повторите попытку.");
@@ -52,25 +50,51 @@ void Menu() //Меню выбора задачи.
     }
 }
 
-int [] CreateAndFillingArray(int minDimension, int maxDimension, int minValue, int maxValue) //Метод для создания и заполнения массива псевдо-рандомными числами.
-{                                                                                            //minDimension - минимальное число размерности массива для метода Random.Next
-    int [] arr = new int [random.Next(minDimension, maxDimension)];                          //maxDimension - максимальное число размерности массива для метода Random.Next
-                                                                                             //minValue - минимальное значение элемента массива метода Random.Next
-    for (int i = 0; i < arr.Length; i++)                                                     //maxValue - максимальное значение элемента массива  метода Random.Next
-    {
-        arr [i] = random.Next(minValue,maxValue);
-    }
-    return arr;
+static int PromptInt(string message) //Метод для упрощения ввода целого числа с консоли
+{
+    Console.WriteLine(message);
+    int result = Convert.ToInt32(Console.ReadLine());
+    return result;
 }
 
-/*
-Задача 41: Пользователь вводит с клавиатуры M чисел. Посчитайте, сколько чисел больше 0 ввёл пользователь.
+static double PromptDouble(string message) //Метод для упрощения ввода числа с плавающей запятой с консоли
+{
+    Console.WriteLine(message);
+    double result = Convert.ToDouble(Console.ReadLine());
+    return result;
+}
 
-0, 7, 8, -2, -2 -> 2
+void PrintArray(int[] array)// Вывод массива.
+{
+    Console.WriteLine(String.Join(" ", array));
+}
 
-1, -7, 567, 89, 223-> 3
+void Task_41()
+{
+    int[] nums = new int[PromptInt("Укажите количество чисел.")];
+    int positivCount = 0;
 
-Задача 43: Напишите программу, которая найдёт точку пересечения двух прямых, заданных уравнениями y = k1 * x + b1, y = k2 * x + b2; значения b1, k1, b2 и k2 задаются пользователем.
+    Console.Clear();
+    for (int i = 0; i < nums.Length; i++)
+    {
+        nums[i] = PromptInt($"Введите {i + 1} число.");
+        if (nums[i] > 0) positivCount++;
+    }
 
-b1 = 2, k1 = 5, b2 = 4, k2 = 9 -> (-0,5; -0,5)
-*/
+    Console.WriteLine($"Количество чисел больше нуля: {positivCount}");
+    Console.ReadLine();
+}
+
+void Task_43()
+{
+    double b1 = PromptDouble("Введите b1:");
+    double k1 = PromptDouble("Введите k1:");
+    double b2 = PromptDouble("Введите b2:");
+    double k2 = PromptDouble("Введите k2:");
+
+    double x = -(b1 - b2) / (k1 - k2);
+    double y = k1 * x + b1;
+
+    Console.WriteLine($"Точка пересечения двух прямых: ({x}; {y}).");
+    Console.ReadLine();
+}
