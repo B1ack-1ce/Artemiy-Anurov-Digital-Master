@@ -11,9 +11,9 @@ void Menu() //Меню выбора задачи.
         Console.Clear();
         Console.WriteLine("Меню выбора задачи.");
         Console.WriteLine("Введите цифру для выбора задачи:");
-        Console.WriteLine("1 - Программа для .");
-        Console.WriteLine("2 - Программа для .");
-        Console.WriteLine("3 - Программа для .");
+        Console.WriteLine("1 - Программа для вывода всех натуральных чисел в промежутке от N до 1.");
+        Console.WriteLine("2 - Программа для поиска сумму натуральных элементов в промежутке от M до N .");
+        Console.WriteLine("3 - Программа вычисления функции Аккермана.");
         Console.WriteLine("0 - Для выхода из программы.");
 
         bool access = int.TryParse(Console.ReadLine(), out int result);
@@ -66,7 +66,7 @@ int Prompt(string message)
 
 void Task_64()
 {
-    Console.WriteLine(FindAllEllementsTo0(Prompt("Введите число:")));
+    Console.WriteLine(FindAllEllementsTo0(Prompt("Введите число N:")));
     Console.ReadLine();
 }
 
@@ -78,7 +78,7 @@ string FindAllEllementsTo0(int userNum)
 
 void Task_66()
 {
-    Console.WriteLine(FindSumAllElements(Prompt("Введите первое число"), Prompt("Введите последнее число")));
+    Console.WriteLine(FindSumAllElements(Prompt("Введите число M:"), Prompt("Введите число N:")));
     Console.ReadLine();
 }
 
@@ -90,7 +90,7 @@ int FindSumAllElements(int firstNum, int secondNum)
 
 void Task_68()
 {
-    Console.WriteLine(AckermannFunction(2, 3));
+    Console.WriteLine(AckermannFunction(Prompt("Введите число M:"), Prompt("Введите число N:")));
     Console.ReadLine();
 }
 
@@ -105,6 +105,7 @@ int AckermannFunction (int numberM, int numberN)
 /*
 Задача 68: 
 Напишите программу вычисления функции Аккермана с помощью рекурсии. 
-Даны два неотрицательных числа m и n. 
-m = 2, n = 3 -> A(m,n) = 29
+Даны два неотрицательных числа m и n.
+m = 2, n = 3 -> A(m,n) = 9
+m = 3, n = 2 -> A(m,n) = 29
 */

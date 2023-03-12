@@ -149,7 +149,8 @@ int[] NumberTranslationFrom10To2(int userNumber) //Перевод десятич
 
 void Task_44()
 {
-
+    int userNum = Prompt("Введите число:");
+    
 }
 
 void Task_45()

@@ -6,8 +6,8 @@ void Menu() // Меню выбора задач.
 {
     Console.Clear();
     Console.WriteLine("1 - Программа для ");
-    Console.WriteLine("2 - Программа для ");
-    Console.WriteLine("3 - Программа для ");
+    Console.WriteLine("2 - Программа для возведение значения элемента в квадрат, стоящего на четных индексах.");
+    Console.WriteLine("3 - Программа для поиска суммы элементов, находящихся на главной диагонали.");
     int numberOfTask = Prompt("Введите номер задачи");
     switch (numberOfTask)
     {

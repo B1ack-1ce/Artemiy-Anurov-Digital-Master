@@ -1,8 +1,8 @@
 ﻿Console.Clear();
-Console.WriteLine("1 - Программа для замены положительного на отрицательный знак и наоборот.");
+Console.WriteLine("1 - Программа для замены знака числа на противоположный.");
 Console.WriteLine("2 - Программа для поиска заданного числа в массиве.");
-Console.WriteLine("3 - Программа ");
-Console.WriteLine("4 - Программа ");
+Console.WriteLine("3 - Программа для поиска конкретных значений в диапазоне от N до M. ");
+Console.WriteLine("4 - Программа для вывода произведения первых на последние элементов массива.");
 int numberOfTask = Prompt("Введите номер задачи");
 switch (numberOfTask)
 {
@@ -86,7 +86,7 @@ static bool FoundNumberOfArray(int[] arr, int userNumber, out int index)
     return false;
 }
 
-static void Task_35() //Метод для поиска конкретных значений в диапазоне от N до N
+static void Task_35() //Метод для поиска конкретных значений в диапазоне от N до M
 {
     int[] arr = new int[123];
     Random random = new Random();

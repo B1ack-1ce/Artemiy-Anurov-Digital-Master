@@ -5,10 +5,10 @@ Menu();
 void Menu() // Меню выбора задач.
 {
     Console.Clear();
-    Console.WriteLine("1 - Программа для ");
-    Console.WriteLine("2 - Программа для ");
-    Console.WriteLine("3 - Программа для ");
-    Console.WriteLine("4 - Программа для ");
+    Console.WriteLine("Тема урока: Рекурсия.");
+    Console.WriteLine("1 - Программа для вывода всех натуральных чисел от N до M.");
+    Console.WriteLine("2 - Программа для вывода суммы цифр в числе N.");
+    Console.WriteLine("3 - Программа для вывода числа N в степени M.");
     int numberOfTask = Prompt("Введите номер задачи");
     switch (numberOfTask)
     {
@@ -25,11 +25,6 @@ void Menu() // Меню выбора задач.
         case 3:
             Console.Clear();
             Task_69();
-            break;
-
-        case 4:
-            Console.Clear();
-            //Task_59();
             break;
 
         default:
@@ -88,5 +83,5 @@ int PowNumber(int foundation, int degree)
 {
     if(degree == 1) return foundation ;
     else if(degree == 0) return 1;
-    return foundation  * PowNumber(foundation, degree - 1);
+    return foundation * PowNumber(foundation, degree - 1);
 }
