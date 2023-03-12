@@ -12,7 +12,7 @@ void Menu() //Меню выбора задачи.
         Console.WriteLine("Меню выбора задачи.");
         Console.WriteLine("Введите цифру для выбора задачи:");
         Console.WriteLine("1 - Программа для вывода всех натуральных чисел в промежутке от N до 1.");
-        Console.WriteLine("2 - Программа для поиска сумму натуральных элементов в промежутке от M до N .");
+        Console.WriteLine("2 - Программа для поиска сумму натуральных элементов в промежутке от N до M .");
         Console.WriteLine("3 - Программа вычисления функции Аккермана.");
         Console.WriteLine("0 - Для выхода из программы.");
 
@@ -66,7 +66,7 @@ int Prompt(string message)
 
 void Task_64()
 {
-    Console.WriteLine(FindAllEllementsTo0(Prompt("Введите число N:")));
+    Console.WriteLine("Результат: " + FindAllEllementsTo0(Prompt("Введите число N:")));
     Console.ReadLine();
 }
 
@@ -78,7 +78,10 @@ string FindAllEllementsTo0(int userNum)
 
 void Task_66()
 {
-    Console.WriteLine(FindSumAllElements(Prompt("Введите число M:"), Prompt("Введите число N:")));
+    int n = Prompt("Введите число N:");
+    int m = Prompt("Введите число M:");
+    int sum = FindSumAllElements(n, m);
+    Console.WriteLine($"Сумма чисел от {n} до {m} = {sum}.");
     Console.ReadLine();
 }
 
@@ -90,7 +93,8 @@ int FindSumAllElements(int firstNum, int secondNum)
 
 void Task_68()
 {
-    Console.WriteLine(AckermannFunction(Prompt("Введите число M:"), Prompt("Введите число N:")));
+    int sum = AckermannFunction(Prompt("Введите число M:"), Prompt("Введите число N:"));
+    Console.WriteLine($"Результат вычисления функции Аккермана: {sum}");
     Console.ReadLine();
 }
 
