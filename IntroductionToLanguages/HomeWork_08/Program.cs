@@ -15,10 +15,9 @@ void Menu() //Меню выбора задачи.
         Console.WriteLine("Введите цифру для выбора задачи:");
         Console.WriteLine("1 - Программа для сортировки элементов по убыванию в каждой строке.");
         Console.WriteLine("2 - Программа для поиска строки с наименьшей суммой элементов.");
-        Console.WriteLine("3 - Программа для .");
-        Console.WriteLine("4 - Программа для .");
-        Console.WriteLine("5 - Программа для .");
-        Console.WriteLine("6 - Программа для .");
+        Console.WriteLine("3 - Программа для произведения двух матриц.");
+        Console.WriteLine("4 - Программа для создания трехмерного массива из неповторяющихся двузначных чисел.");
+        Console.WriteLine("5 - Программа для заполнения спиралью массив с заданной размерностью.");
         Console.WriteLine("0 - Для выхода из программы.");
 
         bool access = int.TryParse(Console.ReadLine(), out int result);
@@ -49,11 +48,6 @@ void Menu() //Меню выбора задачи.
                 case 5:
                     Console.Clear();
                     Task_62();
-                    break;
-
-                case 6:
-                    Console.Clear();
-                    Task_61(); //Доп. задача.
                     break;
 
                 case 0:
@@ -97,9 +91,9 @@ int[,] FillArray(int firstDim, int secondDim)
     return arr;
 }
 
-void ShowArray(int[,] arr)
+void ShowArray(int[,] arr, string msg = "")
 {
-    Console.WriteLine("Сгенерированный массив:");
+    Console.WriteLine(msg);
     for (int i = 0; i < arr.GetLength(0); i++)
     {
         for (int j = 0; j < arr.GetLength(1); j++)
@@ -109,67 +103,51 @@ void ShowArray(int[,] arr)
         Console.WriteLine();
     }
 }
-/*
-Задача 54: 
-Задайте двумерный массив. 
-Напишите программу, которая упорядочит по убыванию элементы каждой строки двумерного массива.
-Например, задан массив:
-1 4 7 2
-5 9 2 3
-8 4 2 4
 
-В итоге получается вот такой массив:
-7 4 2 1
-9 5 3 2
-8 4 4 2
-*/
 void Task_54()
 {
     int[,] array = FillArray(Prompt("Введите первую размерность."), Prompt("Введите вторую размерность."));
-    ShowArray(array);
+    ShowArray(array, "Сгенерированный массив:");
 
+    SortArray(array);
+    ShowArray(array, "Отсортированный массив:");
 
     Console.ReadLine();
 }
-
 void SortArray(int[,] arr)
 {
     int temp;
     for (int i = 0; i < arr.GetLength(0); i++)
     {
-        temp = arr[i, 0];
         for (int j = 1; j < arr.GetLength(1); j++)
         {
-
+            for (int k = 0; k < arr.GetLength(1) - 1; k++)
+            {
+                if (arr[i, k] < arr[i, k + 1])
+                {
+                    temp = arr[i, k + 1];
+                    arr[i, k + 1] = arr[i, k];
+                    arr[i, k] = temp;
+                }
+            }
         }
     }
 }
-/*
-Задача 56: 
-Задайте прямоугольный двумерный массив. 
-Напишите программу, которая будет находить строку с наименьшей суммой элементов.
-Например, задан массив:
-1 4 7 2
-5 9 2 3
-8 4 2 4
-5 2 6 7
-Программа считает сумму элементов в каждой строке и выдаёт номер строки с наименьшей суммой элементов: 1 строка
-*/
+
 void Task_56()
 {
     int[,] array = FillArray(Prompt("Введите первую размерность."), Prompt("Введите вторую размерность."));
-    ShowArray(array);
+    ShowArray(array, "Сгенерированный массив:");
     FindMinSumInRow(array);
     Console.ReadLine();
 }
-
 void FindMinSumInRow(int[,] arr)
 {
     int tempSumLine = 0;
     int indexMinSum = 0;
-    
+
     int sumLine = SumElementsInRow(arr, 0);
-    
+
     for (int i = 1; i < arr.GetLength(0); i++)
     {
         tempSumLine = SumElementsInRow(arr, i);
@@ -181,7 +159,6 @@ void FindMinSumInRow(int[,] arr)
     }
     Console.WriteLine($"Минимальную сумму элементов равную {sumLine} имеет строка {indexMinSum + 1}.");
 }
-
 int SumElementsInRow(int[,] array, int index)
 {
     int sumLine = 0;
@@ -191,56 +168,149 @@ int SumElementsInRow(int[,] array, int index)
     }
     return sumLine;
 }
-/*
-Задача 58: 
-Задайте две матрицы. 
-Напишите программу, которая будет находить произведение двух матриц.
-Например, даны 2 матрицы:
-2 4 | 3 4
-3 2 | 3 3
 
-Результирующая матрица будет:
-18 20
-15 18
-*/
 void Task_58()
 {
+    int[,] firstMatrix = FillMatrix();
+    int[,] secondMatrix = FillMatrix();
 
+    ShowArray(firstMatrix, "Первая матрица:");
+    ShowArray(secondMatrix, "Вторая матрица:");
+
+    MultyTwoMatrix(firstMatrix, secondMatrix);
+    Console.ReadLine();
 }
-/*
-Задача 60. 
-Сформируйте трёхмерный массив из неповторяющихся двузначных чисел. 
-Напишите программу, которая будет построчно выводить массив, добавляя индексы каждого элемента.
-Массив размером 2 x 2 x 2
-66(0,0,0) 25(0,1,0)
-34(1,0,0) 41(1,1,0)
-27(0,0,1) 90(0,1,1)
-26(1,0,1) 55(1,1,1)
-*/
+int[,] FillMatrix()
+{
+    int[,] matrix = new int[rnd.Next(2, 4), rnd.Next(2, 4)];
+    for (int i = 0; i < matrix.GetLength(0); i++)
+    {
+        for (int j = 0; j < matrix.GetLength(1); j++)
+        {
+            matrix[i, j] = rnd.Next(0, 5);
+        }
+    }
+    return matrix;
+}
+void MultyTwoMatrix(int[,] firstMatrix, int[,] secondMatrix)
+{
+    if (firstMatrix.GetLength(1) == secondMatrix.GetLength(0))
+    {
+        int[,] thirdMatrix = new int[firstMatrix.GetLength(0), secondMatrix.GetLength(1)];
+        for (int i = 0; i < firstMatrix.GetLength(0); i++)
+        {
+            for (int j = 0; j < secondMatrix.GetLength(1); j++)
+            {
+                for (int k = 0; k < secondMatrix.GetLength(0); k++)
+                {
+                    thirdMatrix[i, j] += firstMatrix[i, k] * secondMatrix[k, j];
+                }
+            }
+        }
+        ShowArray(thirdMatrix, "Результирующая матрица:");
+    }
+    else
+    {
+        Console.WriteLine("Матрицы нельзя перемножить.");
+    }
+}
+
 void Task_60()
 {
-
+    FillTripleArray(2, 6, 6);
+    Console.ReadLine();
 }
-/*
-Задача 62. 
-Напишите программу, которая заполнит спирально массив 4 на 4.
-Например, на выходе получается вот такой массив:
-01 02 03 04
-12 13 14 05
-11 16 15 06
-10 09 08 07
-*/
+void FillTripleArray(int firstDim, int secondDim, int thirdDim)
+{
+    int[,,] tripleArr = new int[firstDim, secondDim, thirdDim];
+
+    int[] tempArr = new int[firstDim * secondDim * thirdDim];
+    CreateUniqueArray(tempArr);
+    int count = 0;
+
+    for (int i = 0; i < tripleArr.GetLength(0); i++)
+    {
+        for (int j = 0; j < tripleArr.GetLength(1); j++)
+        {
+            for (int k = 0; k < tripleArr.GetLength(2); k++)
+            {
+                tripleArr[i, j, k] = tempArr[count];
+                count++;
+            }
+        }
+    }
+    ShowTripleArray(tripleArr);
+}
+int[] CreateUniqueArray(int[] tempArr)
+{
+    for (int i = 0; i < tempArr.Length; i++)
+    {
+        tempArr[i] = rnd.Next(10, 100);
+        if (i >= 1)
+        {
+            for (int j = 0; j < i; j++)
+            {
+                while (tempArr[i] == tempArr[j])
+                {
+                    tempArr[i] = new Random().Next(10, 100);
+                    j = 0;
+                }
+            }
+        }
+    }
+    return tempArr;
+}
+void ShowTripleArray(int[,,] trArr)
+{
+    for (int i = 0; i < trArr.GetLength(0); i++)
+    {
+        for (int j = 0; j < trArr.GetLength(1); j++)
+        {
+            for (int k = 0; k < trArr.GetLength(2); k++)
+            {
+                Console.Write("Значение: " + trArr[i, j, k] + $" Индекс ({i}, {j}, {k}). ");
+            }
+            Console.WriteLine();
+        }
+        Console.WriteLine();
+    }
+}
+
 void Task_62()
 {
-
+    int[,] array = FillSpiralArray(Prompt("Введите размерность:"));
+    ShowArray(array, "Спиральный массив:");
+    Console.ReadLine();
 }
-/*
-Необязательное задание:
-Задача 61: 
-Вывести первые N строк треугольника Паскаля. 
-Сделать вывод в виде равнобедренного треугольника
-*/
-void Task_61() //Доп. задача.
+int[,] FillSpiralArray(int size)
 {
+    int[,] array = new int[size, size];
+    int value = 1;
+    int row = 0;
+    int col = 0;
+    
+    while (value <= size * size)
+    {
+        for (int i = col; i < size - col; i++)
+        {
+            array[row, i] = value++;
+        }
+        row++;
 
+        for (int i = row; i < size - row + 1; i++)
+        {
+            array[i, size - col - 1] = value++;
+        }
+        col++;
+
+        for (int i = size - col - 1; i >= col - 1; i--)
+        {
+            array[size - row, i] = value++;
+        }
+
+        for (int i = size - row - 1; i >= row; i--)
+        {
+            array[i, col - 1] = value++;
+        }
+    }return array;
 }
