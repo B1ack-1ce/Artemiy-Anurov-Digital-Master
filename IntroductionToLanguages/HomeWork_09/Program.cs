@@ -94,14 +94,26 @@ int FindSumAllElements(int firstNum, int secondNum)
 void Task_68()
 {
     int sum = AckermannFunction(Prompt("Введите число M:"), Prompt("Введите число N:"));
-    Console.WriteLine($"Результат вычисления функции Аккермана: {sum}");
+    if(sum == 0)
+    {
+        Console.WriteLine("Числа должны быть положительными");
+    }
+    else Console.WriteLine($"Результат вычисления функции Аккермана: {sum}");
+    
     Console.ReadLine();
 }
 
 int AckermannFunction (int numberM, int numberN)
 {
-    if (numberM == 0) return numberN + 1;
-    if (numberM != 0 && numberN == 0) return AckermannFunction(numberM - 1, 1);
-    if (numberM > 0 && numberN > 0) return AckermannFunction(numberM - 1, AckermannFunction(numberM, numberN - 1));
-    return AckermannFunction(numberM, numberN);
+    if(numberM < 0 || numberN < 0)
+    {
+        return 0;
+    }
+    else
+    {
+        if (numberM == 0) return numberN + 1;
+        if (numberM != 0 && numberN == 0) return AckermannFunction(numberM - 1, 1);
+        if (numberM > 0 && numberN > 0) return AckermannFunction(numberM - 1, AckermannFunction(numberM, numberN - 1));
+        return AckermannFunction(numberM, numberN);
+    }
 }
