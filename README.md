@@ -1,4 +1,4 @@
-# Digital_Master_Git
+# Digital_Master
 **Repository by Artemiy Anurov**
 
 **Introduction To Programming** - блок схемы + семинарские задачи (материал к 1-му блоку обучения)
